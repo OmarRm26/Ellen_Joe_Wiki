@@ -1,0 +1,18 @@
+[
+    {
+        "id":1,
+        "nombre": "Ellen Joe Colegiana",
+        "categoria": "Figuras",
+        "Precio": 899.00,
+        "Descripción": "Figura de Ellen Joe de la marca Apex con el traje de colegiana",
+        "Stock": 25
+    },
+    {
+        "id":2,
+        "nombre": "Ellen Joe Maid",
+        "categoria": "Figuras",
+        "Precio": 1599.00,
+        "Descripción": "Figura de Ellen Joe de la marca Apex con el traje de Maid",
+        "Stock": 12
+    }
+]
