@@ -1,6 +1,11 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Bienvenido a Ellen Joe wiki</title>
+        <!-- Hoja de estilos vinculada -->
+        <link rel="stylesheet" href="assets/css/estilos.css">
     </head>
     <body>
         <header> 
@@ -16,19 +21,29 @@
             <section>
                 <h2>Agregar producto</h2>
                 <form action="#" method="post">
-                    <label for="nombre">Nombre del producto</label>
-                    <input type="text" name ="nombre" id="nombre" required>
+                    <div class="campo">
+                        <label for="nombre">Nombre del producto</label>
+                        <input type="text" name="nombre" id="nombre" required>
+                    </div>
                     <br>
-                    <label for="categoria">Categoria</label>
-                    <input type="text" name ="categoria" id="categoria" required>
+                    <div class="campo">
+                        <label for="categoria">Categoria</label>
+                        <input type="text" name="categoria" id="categoria" required>
+                    </div>
                     <br>
-                    <label for="precio">Precio</label>
-                    <input type="number" name ="precio" id="precio" step="0.01" min="0">
+                    <div class="campo">
+                        <label for="precio">Precio</label>
+                        <input type="number" name="precio" id="precio" step="0.01" min="0" required>
+                    </div>
                     <br>
-                    <label for="stock">Stock</label>
-                    <input type="text" name ="stock" id="stock" step="0.01" min="0">
-
-                    <button type="submit">Agregar producto</button>
+                    <div class="campo">
+                        <label for="stock">Stock</label>
+                        <input type="number" name="stock" id="stock" min="0" required>
+                        <p classs="ayuda-campo" id="ayudaStock">Piezas disponibles, entre 0 a 999</p>
+                        <p class="error-campo" id="errorStock">Escribe un numero entero entre el 0 y el 999. </p> 
+                    </div>
+                    <br>
+                    <button type="submit" class="botton-agregar">Agregar producto</button>
                 </form>
             </section>
         </main>

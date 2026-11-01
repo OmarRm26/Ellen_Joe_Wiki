@@ -1,18 +1,31 @@
-<html>
+<DOCTYPE html>
+<html lang="es">
     <head>
-        <title>Pagina Ellen Joe</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pagina Ellen Joe Detalles</title>
+        <link rel="stylesheet" href="assets/css/estilos.css">
     </head>
     <body>
         <header> 
-            <h1>Bienvenido a mi tienda Tec</h1>
-            <nav>
-                <a href="index.php">Inicio</a>
-                <a href="productos.php">Catalogo</a>
-                <a href="contacto.php">contacto</a>
-            </nav>
+            <h1>Productos</h1>
+            <nav aria-label="Principal">
+                <ul>
+                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="productos.php" aria-current="page">Catalogo</a></li>
+                    <li><a href="contacto.php">Preguntas</a></li>
+                </ul>
+            </nav>  
         </header>
 
         <main>
+            <nav class="migas" aria-label="Rutas de navegación">
+                <ol>
+                    <li><a href="index.php">Inicio</a></li>
+                    <li><a href="productos.php">Catalogo</a></li>
+                    <li aria-current="page">Ellen Figura</li>
+                </ol>   
+            </nav>
             <article>
                     <h3>Figura de Ellen Joe colegiana</h3>
                     <p>Categoria: Figuras</p>
