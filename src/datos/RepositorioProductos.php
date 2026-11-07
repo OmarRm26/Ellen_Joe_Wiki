@@ -17,6 +17,16 @@ class RepositorioProductos
     {
         return $this->convertirAProductos($this->leerRegistros());
     }
+        public function buscarPorId(int $id): Producto
+    {
+        foreach ($this->obtenerTodos() as $producto) {
+            if ($producto->obtenerId() === $id) {
+                return $producto;
+            }
+        }
+
+        throw new OutOfBoundsException("No existe un producto con id $id.");
+    }
 
     private function leerRegistros(): array
     {
