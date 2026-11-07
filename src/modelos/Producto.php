@@ -84,8 +84,9 @@ class Producto {
         return $this->imagen;
     }
     
-    public function estadoDisponible(): bool {
-        return $this->stock > 0;
+    public function estaDisponible(): bool
+    {
+    return $this->stock > 0;
     }
 
     public function obtenerPrecioFormateado(): string {

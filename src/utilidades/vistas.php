@@ -10,7 +10,7 @@ function escapar(string $texto): string
 
 function mostrarDisponibilidad(Producto $producto): void
 {
-    if ($producto->obtenerStock() <= 0) {
+    if (!$producto->estaDisponible()) {
         echo '<p class="agotado">Agotado</p>';
     }
 }
