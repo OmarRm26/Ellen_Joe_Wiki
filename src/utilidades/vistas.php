@@ -8,6 +8,13 @@ function escapar(string $texto): string
     return htmlspecialchars($texto, ENT_QUOTES, 'UTF-8');
 }
 
+function mostrarDisponibilidad(Producto $producto): void
+{
+    if ($producto->obtenerStock() <= 0) {
+        echo '<p class="agotado">Agotado</p>';
+    }
+}
+
 function mostrarTarjetaProducto(Producto $producto, int $nivelTitulo = 3): void
 {
     $titulo = 'h' . $nivelTitulo;
@@ -21,6 +28,7 @@ function mostrarTarjetaProducto(Producto $producto, int $nivelTitulo = 3): void
             <p class="etiqueta-categoria">Categoria: <?= $categoria ?></p>
             <p class="texto-secundario"><?= escapar($producto->obtenerDescripcion()) ?></p>
             <p class="tarjeta-producto-precio">Precio: <?= $producto->obtenerPrecioFormateado() ?></p>
+            <?php mostrarDisponibilidad($producto); ?>
             <a class="enlace-detalle" href="producto-detalle.php?id=<?= $producto->obtenerId() ?>">Ver detalle</a>
         </div>
     </article>
