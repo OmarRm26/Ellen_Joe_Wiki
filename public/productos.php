@@ -1,4 +1,13 @@
-<DOCTYPE html>
+<?php
+declare(strict_types=1);
+
+require_once __DIR__ . '/../src/datos/RepositorioProductos.php';
+require_once __DIR__ . '/../src/utilidades/vistas.php';
+
+$repositorio = new RepositorioProductos(__DIR__ . '/../datos/datos.json');
+$productos = $repositorio->obtenerTodos();
+?>
+<!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
@@ -22,51 +31,9 @@
             <h2>Catalogo</h2>
             <a href="agregar-producto.php" class="botton-agregar">agregar producto</a>
             <section class="tarjetas-productos">
-                <article>
-                    <img src="https://placehold.co/200x150  " alt="Detalle de la foto">
-                    <div class="tajerjeta-producto-info">
-                    <h3>Figura de Ellen Joe maid</h3>
-                    <p class="etiqueta-categoria">Categoria: Figuras</p>
-                    <p class="texto-secundario">Texto secundario para detalles del producto</p>
-                    <p class="tarjeta-producto-precio">Precio: $899.00</p>
-                    <a class="enlace-detalle" href="producto-detalle.php?id=1">Ver detalle</a>
-                    </div>
-                </article>
-
-                <article>
-                    <img src="https://placehold.co/200x150  " alt="Detalle de la foto">
-                    <div class="tajerjeta-producto-info">
-                    <h3>Figura de Ellen Joe colegiana</h3>
-                    <p class="etiqueta-categoria">Categoria: Figuras</p>
-                    <p class="texto-secundario">Texto secundario para detalles del producto</p>
-                    <p class="tarjeta-producto-precio">Precio: $899.00</p>
-                    <a class="enlace-detalle" href="producto-detalle.php?id=1">Ver detalle</a>
-                    </div>
-                </article>
-
-                <article>
-                    <img src="https://placehold.co/200x150  " alt="Detalle de la foto">
-                    <div class="tajerjeta-producto-info">
-                    <h3>Figura de Ellen Joe concierto</h3>
-                    <p class="etiqueta-categoria">Categoria: Figuras</p>
-                    <p class="texto-secundario">Texto secundario para detalles del producto</p>
-                    <p class="tarjeta-producto-precio">Precio: $899.00</p>
-                    <a class="enlace-detalle" href="producto-detalle.php?id=1">Ver detalle</a>
-                    </div>
-                </article>
-
-                <article>
-                    <img src="https://placehold.co/200x150  " alt="Detalle de la foto">
-                    <div class="tajerjeta-producto-info">
-                    <h3>Figura de Ellen Joe coca-cola</h3>
-                    <p class="etiqueta-categoria">Categoria: Figuras</p>
-                    <p class="texto-secundario">Texto secundario para detalles del producto</p>
-                    <p class="tarjeta-producto-precio">Precio: $899.00</p>
-                    <a class="enlace-detalle" href="producto-detalle.php?id=1">Ver detalle</a>
-                    </div>
-                </article>
-
-
+                <?php foreach ($productos as $producto): ?>
+                    <?php mostrarTarjetaProducto($producto); ?>
+                <?php endforeach; ?>
             </section>
         </main>
 
