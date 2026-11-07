@@ -23,7 +23,7 @@ function mostrarTarjetaProducto(Producto $producto, int $nivelTitulo = 3): void
     ?>
     <article>
         <img src="https://placehold.co/200x150" alt="Foto de <?= $nombre ?>">
-        <div class="tajerjeta-producto-info">
+        <div class="tarjeta-producto-info">
             <<?= $titulo ?>><?= $nombre ?></<?= $titulo ?>>
             <p class="etiqueta-categoria">Categoria: <?= $categoria ?></p>
             <p class="texto-secundario"><?= escapar($producto->obtenerDescripcion()) ?></p>
