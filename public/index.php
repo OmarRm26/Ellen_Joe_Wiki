@@ -1,37 +1,43 @@
-<DOCTYPE html>
+<?php
+declare(strict_types=1);
+
+require_once __DIR__ . '/../src/datos/RepositorioProductos.php';
+require_once __DIR__ . '/../src/utilidades/vistas.php';
+
+$repositorio = new RepositorioProductos(__DIR__ . '/../datos/datos.json');
+$destacados = array_slice($repositorio->obtenerTodos(), 0, 3);
+?>
+<!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pagina Ellen Joe</title>
-        <link rel="stylesheet" href="assets/css/estilos.css">
-    </head>
-    <body>
-        <header> 
-            <h1>Bienvenido a Ellen Joe wiki</h1>
-            <nav aria-label="Principal">
-                <ul>
-                    <li><a href="index.php" aria-current="page">Inicio</a></li>
-                    <li><a href="productos.php">Catalogo</a></li>
-                    <li><a href="contacto.php">Preguntas</a></li>
-                </ul>
-            </nav>
-        </header>
-        <main>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Ellen Joe - Inicio</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+    <header> 
+        <h1>Productos</h1>
+        <nav aria-label="Principal">
             <ul>
-                <li><a href="index.php">Inicio</a></li>
-                <li><a href="productos.php">Catalogo</a></li>
+                <li><a href="index.php" aria-current="page">Inicio</a></li>
+                <li><a href="productos.php">Catálogo</a></li>
                 <li><a href="contacto.php">Preguntas</a></li>
             </ul>
-            <section>
-                <h2>Productos destacados</h2>
-                <p>Encuentra los mejores productos de Ellen Joe</p>
-            </section>
-        </main>
+        </nav>  
+    </header>
 
-        <footer>
-            <p>&copy; 2026 Tienda Ellen Joe. todos los derechos reservados </p>
-        </footer>
+    <main>
+        <h2>Productos Destacados</h2>
+        <section class="tarjetas-productos">
+            <?php foreach ($destacados as $producto): ?>
+                <?php mostrarTarjetaProducto($producto, 3); ?>
+            <?php endforeach; ?>
+        </section>
+    </main>
 
-    </body>
+    <footer>
+        <p>&copy; 2026 Tienda Tec. todos los derechos reservados</p>
+    </footer>
+</body>
 </html>
