@@ -5,18 +5,7 @@ require_once __DIR__ . '/../src/datos/RepositorioProductos.php';
 require_once __DIR__ . '/../src/utilidades/vistas.php';
 
 $repositorio = new RepositorioProductos(__DIR__ . '/../datos/datos.json');
-$productoId = (int) filter_var($_GET['id'] ?? '', FILTER_VALIDATE_INT);
-
-$productoEncontrado = false;
-$producto = null;
-
-try {
-    $producto = $repositorio->buscarPorId($productoId);
-    $productoEncontrado = true;
-} catch (OutOfBoundsException $error) {
-    $productoEncontrado = false;
-    http_response_code(404);
-}
+$idSolicitado = (int) filter_var($_GET['id'] ?? '', FILTER_VALIDATE_INT);
 
 $productoEncontrado = false;
 $producto = null;
