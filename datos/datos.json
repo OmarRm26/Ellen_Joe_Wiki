@@ -1,50 +1,56 @@
 [
     {
-        "id":1,
+        "id": 1,
         "nombre": "Ellen Joe Colegiana",
         "categoria": "Figuras",
-        "Precio": 899.00,
-        "Descripción": "Figura de Ellen Joe de la marca Apex con el traje de colegiana",
-        "Stock": 25
+        "precio": 899.00,
+        "descripcion": "Figura de Ellen Joe de la marca Apex con el traje de colegiana",
+        "stock": 25,
+        "imagen": "ellen-colegiana.jpg"
     },
     {
-        "id":2,
+        "id": 2,
         "nombre": "Ellen Joe Maid",
         "categoria": "Figuras",
-        "Precio": 1599.00,
-        "Descripción": "Figura de Ellen Joe de la marca Apex con el traje de Maid",
-        "Stock": 12
+        "precio": 1599.00,
+        "descripcion": "Figura de Ellen Joe de la marca Apex con el traje de Maid",
+        "stock": 12,
+        "imagen": "ellen-maid.jpg"
     },
     {
-        "id":3,
+        "id": 3,
         "nombre": "Ellen Joe Bikini",
         "categoria": "Figuras",
-        "Precio": 1299.00,
-        "Descripción": "Figura de Ellen Joe de la marca Apex con el traje de Bikini",
-        "Stock": 0
+        "precio": 1299.00,
+        "descripcion": "Figura de Ellen Joe de la marca Apex con el traje de Bikini",
+        "stock": 0,
+        "imagen": "ellen-bikini.jpg"
     },
     {
-        "id":4,
+        "id": 4,
         "nombre": "Ellen Joe Kimono",
         "categoria": "Accesorios",
-        "Precio": 1399.00,
-        "Descripción": "Figura de Ellen Joe de la marca Apex con el traje de Kimono",
-        "Stock": 10
+        "precio": 1399.00,
+        "descripcion": "Figura de Ellen Joe de la marca Apex con el traje de Kimono",
+        "stock": 10,
+        "imagen": "ellen-kimono.jpg"
     },
     {
-        "id":5,
+        "id": 5,
         "nombre": "Ellen Joe Casual",
         "categoria": "Accesorios",
-        "Precio": 1099.00,
-        "Descripción": "Figura de Ellen Joe de la marca Apex con el traje Casual",
-        "Stock": 15
+        "precio": 1099.00,
+        "descripcion": "Figura de Ellen Joe de la marca Apex con el traje Casual",
+        "stock": 15,
+        "imagen": "ellen-casual.jpg"
     },
     {
-        "id":6,
+        "id": 6,
         "nombre": "Ellen Joe Vestido de Gala",
         "categoria": "Accesorios",
-        "Precio": 1799.00,
-        "Descripción": "Figura de Ellen Joe de la marca Apex con el traje de Vestido de Gala",
-        "Stock": 8
+        "precio": 1799.00,
+        "descripcion": "Figura de Ellen Joe de la marca Apex con el traje de Vestido de Gala",
+        "stock": 8,
+        "imagen": "ellen-gala.jpg"
     }
 ]
