@@ -9,4 +9,3 @@ echo '<pre>';
 echo 'Registros leidos: ' . count($repositorio->obtenerTodos()) . "\n";
 echo 'Primer nombre: ' . $repositorio->obtenerTodos()[0]['nombre'] . "\n";
 echo '</pre>';
-?>

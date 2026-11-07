@@ -12,34 +12,25 @@ class RepositorioProductos
         $this->rutaArchivo = $rutaArchivo;
     }
 
-    private function leerRegistros(): array
-    {
-        if (!file_exists($this->rutaArchivo)) {
-            return [];
-        }
-        $contenido = file_get_contents($this->rutaArchivo);
-        return json_decode($contenido, true) ?? [];
-    }
-
-    private function convertirAProductos(array $registros): array
-    {
-        $productos = [];
-        foreach ($registros as $registro) {
-            $productos[] = new Producto(
-                $registro['id'],
-                $registro['nombre'],
-                $registro['descripcion'],
-                $registro['precio'],
-                $registro['categoria_id'],
-                $registro['imagen']
-            );
-        }
-        return $productos;
-    }
-
+    // Paso temporal: todavía devuelve arreglos. En 2.2 devolverá objetos.
     public function obtenerTodos(): array
     {
-        $registros = $this->leerRegistros();
-        return $this->convertirAProductos($registros);
+        return $this->leerRegistros();
+    }
+
+    private function leerRegistros(): array
+    {
+        if (!is_file($this->rutaArchivo)) {
+            throw new RuntimeException("No se encontró el archivo de datos: {$this->rutaArchivo}");
+        }
+
+        $contenido = file_get_contents($this->rutaArchivo);
+        $registros = json_decode($contenido, true, 512, JSON_THROW_ON_ERROR);
+
+        if (!is_array($registros)) {
+            throw new RuntimeException('El archivo de datos debe contener un arreglo de registros.');
+        }
+
+        return $registros;
     }
 }
