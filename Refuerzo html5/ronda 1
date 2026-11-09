@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catálogo - Tienda Tec</title>
+</head>
+<body>
+    <header>
+        <h1>Tienda Tec</h1>
+        <nav aria-label="Principal">
+            <ul>
+                <li><a href="01-estructura.html">Catálogo</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <aside>
+            <h2>Filtros</h2>
+            <form>
+                <label for="categoria">Categoría:</label>
+                <select id="categoria" name="categoria">
+                    <option value="">Todas</option>
+                    <option value="figuras">Figuras</option>
+                </select>
+            </form>
+        </aside>
+
+        <section>
+            <h2>Listado de Productos</h2>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Omar. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

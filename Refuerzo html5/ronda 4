@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de Producto - Ellen Joe Bikini</title>
+</head>
+<body>
+    <header>
+        <!-- Migas de pan (Breadcrumbs) -->
+        <nav aria-label="Migas de pan">
+            <ol>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="01-estructura.html">Catálogo</a></li>
+                <li aria-current="page">Ellen Joe Bikini</li>
+            </ol>
+        </nav>
+    </header>
+
+    <main id="ficha-producto-principal">
+        <article>
+            <h2>Ellen Joe Bikini</h2>
+
+            <!-- Imagen envuelta en figure con figcaption -->
+            <figure>
+                <img src="https://placehold.co/400x300" alt="Figura coleccionable de Ellen Joe vistiendo traje de baño de dos piezas en tono oscuro">
+                <figcaption>Vista frontal de la figura a escala de Ellen Joe (Edición Bikini).</figcaption>
+            </figure>
+
+            <!-- Bloques de información secundaria con clases reutilizables -->
+            <p class="info-secundaria info-precio">Precio: <strong>$1,299.00</strong></p>
+            <p class="info-secundaria info-disponibilidad">Estado: Agotado</p>
+            <p class="info-secundaria info-descripcion">Figura detallada de la marca Apex inspirada en el personaje de Zenless Zone Zero.</p>
+
+            <!-- Enlace externo -->
+            <p>
+                Puedes consultar más referencias del estándar HTML en 
+                <a href="https://quickref.me/html" target="_blank" rel="noopener noreferrer">QuickRef.me</a>.
+            </p>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tienda Tec. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

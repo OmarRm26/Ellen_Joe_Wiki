@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reto Final - Ficha de Producto</title>
+</head>
+<body>
+    <!-- Ronda 1: Estructura Semántica (Header + Nav) -->
+    <header>
+        <h1>Tienda Tec</h1>
+        <nav aria-label="Migas de pan">
+            <ol>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="01-estructura.html">Catálogo</a></li>
+                <li aria-current="page">Ellen Joe Bikini</li>
+            </ol>
+        </nav>
+    </header>
+
+    <!-- Ronda 1 & 4: Main con id único y clases reutilizables -->
+    <main id="ficha-reto-final">
+        <article class="tarjeta-producto-detalle">
+            <h2>Ellen Joe Bikini</h2>
+
+            <!-- Ronda 4: Imagen en figure/figcaption y Enlace -->
+            <figure>
+                <a href="https://placehold.co/600x400" target="_blank" rel="noopener noreferrer">
+                    <img src="https://placehold.co/300x200" alt="Figura coleccionable de Ellen Joe en traje de baño">
+                </a>
+                <figcaption>Haz clic en la imagen para verla en tamaño completo.</figcaption>
+            </figure>
+
+            <!-- Ronda 2: Lista de características / Datos secundarios (dl/dt/dd) -->
+            <section class="bloque-especificaciones">
+                <h3>Especificaciones del Producto</h3>
+                <dl>
+                    <dt>Precio:</dt>
+                    <dd class="info-secundaria">$1,299.00</dd>
+                    <dt>Categoría:</dt>
+                    <dd class="info-secundaria">Figuras</dd>
+                    <dt>Disponibilidad:</dt>
+                    <dd class="info-secundaria">Agotado</dd>
+                </dl>
+            </section>
+
+            <!-- Ronda 3: Fragmento de Formulario con validación nativa -->
+            <section class="bloque-pedido">
+                <h3>Solicitar Notificación de Stock</h3>
+                <form action="#" method="post">
+                    <fieldset>
+                        <legend>Datos de Contacto</legend>
+                        <div>
+                            <label for="nombreUsuario">Nombre completo:</label>
+                            <input type="text" id="nombreUsuario" name="nombreUsuario" required>
+                        </div>
+                        <div>
+                            <label for="correoNotificacion">Correo electrónico:</label>
+                            <input type="email" id="correoNotificacion" name="correoNotificacion" required>
+                        </div>
+                        <div>
+                            <label for="cantidadDeseada">Cantidad de interés:</label>
+                            <input type="number" id="cantidadDeseada" name="cantidadDeseada" min="1" max="5" value="1" required>
+                        </div>
+                        <div>
+                            <label for="medioContacto">Preferencia de contacto:</label>
+                            <select id="medioContacto" name="medioContacto" required>
+                                <option value="">-- Selecciona una opción --</option>
+                                <option value="email">Correo</option>
+                                <option value="whatsapp">WhatsApp</option>
+                                <option value="llamada">Llamada</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="mensajeNota">Notas adicionales:</label>
+                            <textarea id="mensajeNota" name="mensajeNota" rows="3"></textarea>
+                        </div>
+                    </fieldset>
+                    <button type="submit">Avisarme cuando esté disponible</button>
+                </form>
+            </section>
+        </article>
+    </main>
+
+    <!-- Ronda 1: Footer -->
+    <footer>
+        <p>&copy; 2026 Tienda Tec. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

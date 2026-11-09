@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listas y Tablas - Catálogo</title>
+</head>
+<body>
+    <header>
+        <h1>Representación de Datos del Catálogo</h1>
+    </header>
+
+    <main>
+        <!-- Representación 1: Lista con datos secundarios en lista de descripción -->
+        <section>
+            <h2>Listado en Formato de Lista</h2>
+            <ul>
+                <li>
+                    <h3>Ellen Joe Colegiana</h3>
+                    <dl>
+                        <dt>Precio:</dt>
+                        <dd>$899.00</dd>
+                        <dt>Categoría:</dt>
+                        <dd>Figuras</dd>
+                    </dl>
+                </li>
+                <li>
+                    <h3>Ellen Joe Maid</h3>
+                    <dl>
+                        <dt>Precio:</dt>
+                        <dd>$1,599.00</dd>
+                        <dt>Categoría:</dt>
+                        <dd>Figuras</dd>
+                    </dl>
+                </li>
+            </ul>
+            <!-- Usaría lista cuando los elementos requieran un maquetado visual flexible tipo tarjeta o rejilla responsiva. -->
+        </section>
+
+        <!-- Representación 2: Tabla completa con 4 columnas -->
+        <section>
+            <h2>Listado en Formato de Tabla</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Ellen Joe Colegiana</td>
+                        <td>Figuras</td>
+                        <td>$899.00</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Ellen Joe Maid</td>
+                        <td>Figuras</td>
+                        <td>$1,599.00</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- Usaría tabla cuando necesite comparar datos estructurados, generar reportes de inventario o paneles de administración. -->
+        </section>
+    </main>
+</body>
+</html>
