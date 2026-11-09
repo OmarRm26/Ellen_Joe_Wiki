@@ -1,224 +1,237 @@
+/* ==========================================
+   1. VARIABLES DE MARCA (:root)
+   ========================================== */
 :root {
-    --color-primario: #d51717;
-    --color-acento: #951616;
-    --color-texto: #161a1e;
-    --color-fondo: #f5f7fa;
-    --color-acento: #0a0a0a; 
-    --color-error: #b3261e;
-    --fuente-base: "Segoe UI", Aria, sans-serif;
-    --espaciado-base: 8px;
-    --columnas-catalogo: 2;
+  /* Marca: 3 Colores principales */
+  --color-primario: #d51717;
+  --color-acento: #951616;
+  --color-secundario: #0a0a0a;
+  
+  /* Sistema UI y estado */
+  --color-texto: #161a1e;
+  --color-fondo: #f5f7fa;
+  --color-error: #b3261e;
+
+  /* Marca: Tipografía */
+  --fuente-base: "Segoe UI", Arial, sans-serif;
+
+  /* Marca: Escala de espaciado base */
+  --espaciado-base: 8px;
+
+  /* Layout */
+  --columnas-catalogo: 2;
 }
 
-*, *::before, *::after{
-    box-sizing: border-box;
+/* ==========================================
+   2. RESET MÍNIMO
+   ========================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-body{
-    margin: 0; 
-    font-family: var(--fuente-base);
-    color: var(--color-texto);
-    background-color: var(--color-fondo);
+body {
+  margin: 0;
+  background-color: var(--color-fondo);
 }
 
-main{
-    padding: 0 24px;
-
+/* ==========================================
+   3. TIPOGRAFÍA GENERAL
+   ========================================== */
+body {
+  font-family: var(--fuente-base);
+  color: var(--color-texto);
 }
 
-header{
-    background-color: var(--color-primario);
-    color: white;
-    padding: calc(var(--espaciado-base) * 2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+h1 {
+  font-size: 1.75rem;
 }
 
-nav ul{
-    list-style: none;
-    display: flex;
-    gap: calc(var(--espaciado-base) * 2);
-    margin:  0;
-    padding: 0;
+h2 {
+  font-size: 1.1rem;
+  margin: 0 0 4px 0;
 }
 
-nav a{
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+p, .texto-secundario {
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-nav a:hover{
-    color: var(--color-acento);
-    text-decoration: underline;
-    text-underline-offset: 4px;
+/* ==========================================
+   4. COMPONENTES
+
+
+/* Layout & Navegación */
+main {
+  padding: 0 24px;
 }
 
-nav a[aria-current]{
-    border-bottom: 3px solid white;
-    padding-bottom: 2px;
+header {
+  background-color: var(--color-primario);
+  color: #ffffff;
+  padding: calc(var(--espaciado-base) * 2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.tarjetas-productos{
-    display: grid;
-    grid-template-columns: repeat(var(--columnas-catalogo), 1fr );
-    gap: 16;
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: calc(var(--espaciado-base) * 2);
+  margin: 0;
+  padding: 0;
 }
 
-article{
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex: 1 1 250;
-    padding: calc(var(--espacio-base)*2);
-    background-color: white;
-    border: 1px solid #d9dee3;
-    border-radius: 4px;
-    margin-bottom: calc(var(--espaciado-base)*2);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-}
-article img{
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    flex-shrink: 0;
-    margin-bottom: 0;
+nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.tarjetas-productos-info{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
+nav a:hover {
+  color: var(--color-acento);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-.etiqueta-categoria{
-    display: inline-block;
-    background-color: var(--color-fondo);
-    color: var(--color-acento);
-    font-size: 0.75rem;
-    padding: 2px 8px;
-    border-radius: 12px;
-    margin-bottom: var(--espaciado-base);
+nav a[aria-current] {
+  border-bottom: 3px solid #ffffff;
+  padding-bottom: 2px;
 }
 
-.enlace-detalle{
-    display: inline-block;
-    margin-top: auto;
-    color: var(--color-acento);
-    font-weight: bold;
-    text-decoration: none;
+/* Catálogo y Tarjetas de Producto */
+.tarjetas-productos {
+  display: grid;
+  grid-template-columns: repeat(var(--columnas-catalogo), 1fr);
+  gap: 16px; /* Corregido sintaxis px */
 }
 
-.enlace-detalle:hover{
-    text-decoration: underline;
+article {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1 1 250px; /* Corregido sintaxis px */
+  padding: calc(var(--espaciado-base) * 2); /* Corregido typo variable */
+  background-color: #ffffff;
+  border: 1px solid #d9dee3;
+  border-radius: 4px;
+  margin-bottom: calc(var(--espaciado-base) * 2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
-.tarjeta-producto-precio{
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: var(--color-primario);
+article img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin-bottom: 0;
 }
 
-p, .texto-secundario{
-    font-size: 1rem;
-    line-height: 1.5;
-
+.tarjetas-productos-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
 }
 
-.botton-agregar{
-    display: inline-block;
-    margin-top: calc(var(--espaciado-base) *2);
-    margin-bottom: calc(var(--espaciado-base) *2);
-    padding: var(--espaciado-base) calc(var(--espaciado-base) *2);
-    background-color: var(--color-acento);
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 4px;
+.etiqueta-categoria {
+  display: inline-block;
+  background-color: var(--color-fondo);
+  color: var(--color-acento);
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-bottom: var(--espaciado-base);
 }
 
-.botton-agregar{
-    background-color: var(--color-primario);
+.enlace-detalle {
+  display: inline-block;
+  margin-top: auto;
+  color: var(--color-acento);
+  font-weight: bold;
+  text-decoration: none;
 }
 
-h1{
-    font-size: 1.75rem;
+.enlace-detalle:hover {
+  text-decoration: underline;
 }
 
-h2{
-    font-size: 1.1rem;
-    margin: 0 0 4px 0;
+.tarjeta-producto-precio {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--color-primario);
 }
 
-.campo{
-    margin-bottom: calc(var(--espaciado-base) * 2);
+/* Formularios y Entradas */
+.campo {
+  margin-bottom: calc(var(--espaciado-base) * 2);
 }
 
-label{
-    display: block;
-    font-weight: bold;
-    margin-bottom 4px;
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 4px; /* Corregido sintaxis px */
 }
 
-input{
-    width:100%;
-    max-width: 420px;
-    padding: var(--espaciado-base);
-    border: 1px solid #6c757d;
-    border-radius: 4px;
-    font: inherit;
+input {
+  width: 100%;
+  max-width: 420px;
+  padding: var(--espaciado-base);
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  font: inherit;
 }
 
-input:user-invalid{
-    border-color:var(--color-error);
+input:user-invalid {
+  border-color: var(--color-error);
 }
 
-.ayuda-campo{
-    font-size: 0.8 rem;
-    margin: 4px 0 0;
+.ayuda-campo {
+  font-size: 0.8rem; /* Corregido espacio interno del rem */
+  margin: 4px 0 0;
 }
 
-.error-campo{
-    display: none;
-    font-size: 0.875rem;
-    font-weight: bold;
-    color: var (--color-error);
-    margin: 4px 0 0;
+.error-campo {
+  display: none;
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: var(--color-error); /* Corregido espacio en var() */
+  margin: 4px 0 0;
 }
 
-input:user-invalid ~ .error-campo{
-    display: block;
+input:user-invalid ~ .error-campo {
+  display: block;
 }
 
-.boton-agregar, button[type="submit"]{
-    display: inline-block;
-    padding: calc(var(--espaciado-base) *1.5) calc(var(--espaciado-base) *2);
-    background-color: var(--color-acento);
-    color: white;
-    font: inherit;
-    font-weight: bold;
-    text-decoration: none;
-    border: 0;
-    border-radius: 4px;
-    cursor: pointer;
+/* Botones */
+.boton-agregar, button[type="submit"] {
+  display: inline-block;
+  padding: calc(var(--espaciado-base) * 1.5) calc(var(--espaciado-base) * 2);
+  background-color: var(--color-primario);
+  color: #ffffff;
+  font: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.migas ol{
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--espaciado-base);
-    margin: calc(var(--espaciado-base) * 2) 0;
-    padding: 0;  
+/* Migas de pan */
+.migas ol {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaciado-base);
+  margin: calc(var(--espaciado-base) * 2) 0;
+  padding: 0;
 }
 
-.migas a{
-    color: var(--color-acento);
+.migas a {
+  color: var(--color-acento);
 }
 
-.migas li + li::before{
-    content: "/";
-    margin-right: var(--espaciado-base);
+.migas li + li::before {
+  content: "/";
+  margin-right: var(--espaciado-base);
 }
