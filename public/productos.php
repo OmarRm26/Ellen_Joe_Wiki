@@ -1,12 +1,20 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/../src/datos/RepositorioProductos.php';
+require_once __DIR__ . '/../src/datos/conectar.php';
+require_once __DIR__ . '/../src/modelos/Producto.php';
 require_once __DIR__ . '/../src/utilidades/vistas.php';
 
-$repositorio = new RepositorioProductos(__DIR__ . '/../datos/datos.json');
-$productos = $repositorio->obtenerTodos();
+// El JOIN devuelve la categoría como texto, con los mismos campos que tenía datos.json.
+$consulta = 'SELECT p.id, p.nombre, c.nombre AS categoria, p.precio, p.descripcion, p.stock, p.imagen
+             FROM productos p
+             INNER JOIN categorias c ON c.id = p.categoria_id
+             ORDER BY p.id';
+
+$registros = conectar()->query($consulta)->fetchAll();
+$productos = array_map(fn (array $registro) => Producto::desdeArreglo($registro), $registros);
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -30,10 +38,10 @@ $productos = $repositorio->obtenerTodos();
         <main>
             <h2>Catalogo</h2>
             <a href="agregar-producto.php" class="botton-agregar">agregar producto</a>
-            <section class="tarjetas-productos">
+                        <section class="tarjetas-productos">
                 <?php foreach ($productos as $producto): ?>
-                    <?php mostrarTarjetaProducto($producto); ?>
-                <?php endforeach; ?>
+                <?php mostrarTarjetaProducto($producto, 3); ?>
+            <?php endforeach; ?>
             </section>
         </main>
 

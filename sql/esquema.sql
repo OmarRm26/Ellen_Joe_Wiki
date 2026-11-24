@@ -1,7 +1,16 @@
+SET NAMES utf8mb4;
+
+DROP TABLE IF EXISTS `detalles_pedido`;
+DROP TABLE IF EXISTS `pedidos`;
+DROP TABLE IF EXISTS `productos`;
+DROP TABLE IF EXISTS `categorias`;
+DROP TABLE IF EXISTS `clientes`;
+DROP TABLE IF EXISTS `usuarios`;   
+
 CREATE TABLE `categorias` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `nombre` varchar(60) UNIQUE NOT NULL
-);
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `productos` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
@@ -11,28 +20,28 @@ CREATE TABLE `productos` (
   `stock` int NOT NULL DEFAULT 0,
   `categoria_id` int NOT NULL,
   `imagen` varchar(255) NOT NULL
-);
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `clientes` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `nombre` varchar(100) NOT NULL,
+  `nombre` varchar(100) NOT NULL,git 
   `correo` varchar(120) UNIQUE NOT NULL,
   `contrasena_hash` varchar(255) NOT NULL
-);
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `usuarios` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   `correo` varchar(120) UNIQUE NOT NULL,
   `contrasena_hash` varchar(255) NOT NULL
-);
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `pedidos` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `cliente_id` int NOT NULL,
   `fecha` datetime NOT NULL DEFAULT (CURRENT_TIMESTAMP),
   `estado` ENUM ('pendiente', 'pagado', 'enviado', 'cancelado') NOT NULL DEFAULT 'pendiente'
-);
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `detalles_pedido` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
@@ -40,7 +49,7 @@ CREATE TABLE `detalles_pedido` (
   `producto_id` int NOT NULL,
   `cantidad` int NOT NULL,
   `precio_unitario` decimal(10,2) NOT NULL
-);
+)  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 ALTER TABLE `productos` ADD FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`);
 
