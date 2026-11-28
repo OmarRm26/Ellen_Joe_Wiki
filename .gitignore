@@ -1,1 +1,1 @@
-php -d display_errors=1 -d error_reporting=E_ALL -S localhost:3000 -t public y abrir el puerto 3000 desde la pestaña Ports
+php -d display_errors=1 -d error_reporting=E_ALL -S localhost:3000 -t public y abrir el puerto 3000 desde la pestaña PortsEllen_Joe_Wiki.git/
