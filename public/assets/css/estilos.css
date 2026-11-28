@@ -235,3 +235,17 @@ input:user-invalid ~ .error-campo {
   content: "/";
   margin-right: var(--espaciado-base);
 }
+
+.aviso-servicio{
+    padding: 1rem;
+    border: 1px solid var(--color-error);
+    border-radius: 8px;
+    color: var(--color-error);
+    background-color: #fff;
+}
+
+.busqueda{
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}

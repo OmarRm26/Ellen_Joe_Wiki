@@ -24,7 +24,7 @@ CREATE TABLE `productos` (
 
 CREATE TABLE `clientes` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `nombre` varchar(100) NOT NULL,git 
+  `nombre` varchar(100) NOT NULL, 
   `correo` varchar(120) UNIQUE NOT NULL,
   `contrasena_hash` varchar(255) NOT NULL
 )  ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

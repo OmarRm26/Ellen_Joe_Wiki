@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+require_once __DIR__ . '/AccesoDatosException.php';
+
 // Abre la conexión con la base de datos. Las vistas no deben conocer estos datos.
 function conectar(): PDO
 {
@@ -18,8 +20,14 @@ function conectar(): PDO
         $config['base']
     );
 
-    return new PDO($dsn, $config['usuario'], $config['clave'], [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    ]);
-} 
+    try {
+        return new PDO($dsn, $config['usuario'], $config['clave'], [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ]);
+    } catch (PDOException $error) {
+        error_log('conectar: ' . $error->getMessage());
+        throw new AccesoDatosException('No se pudo conectar con la base de datos.', 0, $error);
+    }
+}

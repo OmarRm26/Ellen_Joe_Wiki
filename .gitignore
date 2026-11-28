@@ -1,10 +1,1 @@
-# Credenciales y configuración local (aparecen desde S9; el repositorio es público)
-src/config/conexion.php
-.env
-
-# Archivos del sistema operativo
-.DS_Store
-Thumbs.db
-
-# Bitácoras y temporales
-*.log
+php -d display_errors=1 -d error_reporting=E_ALL -S localhost:3000 -t public y abrir el puerto 3000 desde la pestaña Ports

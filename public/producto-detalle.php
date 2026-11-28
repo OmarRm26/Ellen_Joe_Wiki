@@ -1,21 +1,22 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/../src/datos/RepositorioProductos.php';
+require_once __DIR__ . '/../src/datos/conectar.php';
+require_once __DIR__ . '/../src/datos/ProductoDAO.php';
 require_once __DIR__ . '/../src/utilidades/vistas.php';
 
-$repositorio = new RepositorioProductos(__DIR__ . '/../datos/datos.json');
 $idSolicitado = (int) filter_var($_GET['id'] ?? '', FILTER_VALIDATE_INT);
 
-$productoEncontrado = false;
-$producto = null;
-
+$productoEncontrado = true;
+$servicioDisponible = true;
 try {
-    $producto = $repositorio->buscarPorId($idSolicitado);
-    $productoEncontrado = true;
+    $producto = (new ProductoDAO(conectar()))->buscarPorId($idSolicitado);
 } catch (OutOfBoundsException $error) {
     $productoEncontrado = false;
     http_response_code(404);
+} catch (AccesoDatosException $error) {
+    $servicioDisponible = false;
+    marcarServicioNoDisponible();
 }
 ?>
 <!DOCTYPE html>
@@ -39,21 +40,19 @@ try {
     </header>
 
     <main>
-        <?php if ($productoEncontrado): ?>
-            <article class="detalle-producto">
-                <h2><?= escapar($producto->obtenerNombre()) ?></h2>
-                <img src="https://placehold.co/300x200" alt="Foto de <?= escapar($producto->obtenerNombre()) ?>">
-                <p class="etiqueta-categoria">Categoría: <?= escapar($producto->obtenerCategoria()->obtenerNombre()) ?></p>
-                <p class="texto-secundario"><?= escapar($producto->obtenerDescripcion()) ?></p>
-                <p class="tarjeta-producto-precio">Precio: <?= $producto->obtenerPrecioFormateado() ?></p>
-                <?php mostrarDisponibilidad($producto); ?>
-            </article>
+        <?php if (!$servicioDisponible): ?>
+            <h1>Catálogo no disponible</h1>
+            <?php mostrarAvisoServicio(); ?>
+        <?php elseif ($productoEncontrado): ?>
+            <h1><?= escapar($producto->obtenerNombre()) ?></h1>
+            <!-- Aquí va el HTML de tu ficha, con los métodos de $producto -->
+            <p>Precio: <?= $producto->obtenerPrecioFormateado() ?></p>
+            <?php mostrarDisponibilidad($producto); ?>
         <?php else: ?>
-            <h2>Producto no encontrado</h2>
+            <h1>Producto no encontrado</h1>
             <p>El producto que buscas no existe o ya no está disponible.</p>
+            <a href="productos.php">Volver al catálogo</a>
         <?php endif; ?>
-        
-        <p><a href="productos.php">Volver al catálogo</a></p>
     </main>
 
     <footer>

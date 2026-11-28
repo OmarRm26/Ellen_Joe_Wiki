@@ -2,17 +2,20 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../src/datos/conectar.php';
-require_once __DIR__ . '/../src/modelos/Producto.php';
+require_once __DIR__ . '/../src/datos/ProductoDAO.php';
 require_once __DIR__ . '/../src/utilidades/vistas.php';
 
-// El JOIN devuelve la categoría como texto, con los mismos campos que tenía datos.json.
-$consulta = 'SELECT p.id, p.nombre, c.nombre AS categoria, p.precio, p.descripcion, p.stock, p.imagen
-             FROM productos p
-             INNER JOIN categorias c ON c.id = p.categoria_id
-             ORDER BY p.id';
+$busqueda = trim((string) ($_GET['q'] ?? ''));
+$productos = [];
+$servicioDisponible = true;
 
-$registros = conectar()->query($consulta)->fetchAll();
-$productos = array_map(fn (array $registro) => Producto::desdeArreglo($registro), $registros);
+try {
+    $dao = new ProductoDAO(conectar());
+    $productos = $busqueda === '' ? $dao->obtenerTodos() : $dao->buscarPorNombre($busqueda);
+} catch (AccesoDatosException $error) {
+    $servicioDisponible = false;
+    marcarServicioNoDisponible();
+}
 ?>
 
 <!DOCTYPE html>
@@ -37,12 +40,26 @@ $productos = array_map(fn (array $registro) => Producto::desdeArreglo($registro)
         
         <main>
             <h2>Catalogo</h2>
-            <a href="agregar-producto.php" class="botton-agregar">agregar producto</a>
-                        <section class="tarjetas-productos">
+                <a href="agregar-producto.php" class="botton-agregar">agregar producto</a>
+            <form class="busqueda" method="get" action="productos.php" role="search">
+                <label for="q">Buscar por nombre:</label>
+                <input type="search" name="q" id="q" value="<?= escapar($busqueda) ?>">
+                <button type="submit">Buscar</button>
+            </form>
+
+            <?php if (!$servicioDisponible): ?>
+                <?php mostrarAvisoServicio(); ?>
+            <?php elseif ($productos === []): ?>
+                <p>No encontramos productos con ese nombre.</p>
+            <?php else: ?>
+            <section class="tarjetas-productos">
                 <?php foreach ($productos as $producto): ?>
                 <?php mostrarTarjetaProducto($producto, 3); ?>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
             </section>
+            <?php endif; ?>
+            
+                       
         </main>
 
         <footer>

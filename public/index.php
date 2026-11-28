@@ -4,8 +4,18 @@ declare(strict_types=1);
 require_once __DIR__ . '/../src/datos/RepositorioProductos.php';
 require_once __DIR__ . '/../src/utilidades/vistas.php';
 
-$repositorio = new RepositorioProductos(__DIR__ . '/../datos/datos.json');
-$destacados = array_slice($repositorio->obtenerTodos(), 0, 3);
+require_once __DIR__ . '/../src/datos/conectar.php';
+require_once __DIR__ . '/../src/datos/ProductoDAO.php';
+
+$destacados = [];
+$servicioDisponible = true;
+
+try {
+    $destacados = array_slice((new ProductoDAO(conectar()))->obtenerTodos(), 0, 3);
+} catch (AccesoDatosException $error) {
+    $servicioDisponible = false;
+    marcarServicioNoDisponible();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -28,12 +38,15 @@ $destacados = array_slice($repositorio->obtenerTodos(), 0, 3);
     </header>
 
     <main>
-        <h2>Productos Destacados</h2>
+        <?php if ($servicioDisponible): ?>
         <section class="tarjetas-productos">
             <?php foreach ($destacados as $producto): ?>
                 <?php mostrarTarjetaProducto($producto, 3); ?>
             <?php endforeach; ?>
         </section>
+        <?php else: ?>
+            <?php mostrarAvisoServicio(); ?>
+        <?php endif; ?>
     </main>
 
     <footer>

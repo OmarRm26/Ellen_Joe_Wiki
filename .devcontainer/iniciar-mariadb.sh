@@ -11,7 +11,7 @@ fi
 
 $SUDO mkdir -p /run/mysqld
 $SUDO chown mysql:mysql /run/mysqld
-$SUDO service mariadb start >/dev/null 2>&1
+$SUDO service mariadb start >/dev/null 2>&1 || $SUDO service mysql start >/dev/null 2>&1
 
 for intento in $(seq 1 30); do
   if $SUDO mysqladmin ping --silent >/dev/null 2>&1; then

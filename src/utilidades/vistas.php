@@ -34,3 +34,14 @@ function mostrarTarjetaProducto(Producto $producto, int $nivelTitulo = 3): void
     </article>
     <?php
 }
+
+// Si la base no responde, el visitante ve un aviso general y el navegador recibe un 503.
+function marcarServicioNoDisponible(): void
+{
+    http_response_code(503);
+}
+
+function mostrarAvisoServicio(): void
+{
+    echo '<p class="aviso-servicio" role="alert">El catálogo no está disponible por el momento. Intenta de nuevo en unos minutos.</p>';
+}
